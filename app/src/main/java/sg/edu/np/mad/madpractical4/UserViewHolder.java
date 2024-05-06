@@ -2,65 +2,65 @@ package sg.edu.np.mad.madpractical4;
 
 import static androidx.core.content.ContextCompat.startActivity;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.Random;
+import org.w3c.dom.Text;
+
 public class UserViewHolder extends RecyclerView.ViewHolder {
+    ImageView smallImage;
+    ImageView bigImage;
     TextView name;
-    TextView des;
+    TextView description;
 
-    ImageView smallImg;
-
-    ImageView bigImg;
-    private static final String TAG = "HolderActivity";
-    public UserViewHolder(View itemView) {
+    public UserViewHolder(View itemView){
         super(itemView);
-        name = itemView.findViewById(R.id.tvName);
-        des = itemView.findViewById(R.id.tvDes);
-        smallImg = itemView.findViewById(R.id.ivImageSmall);
-        bigImg = itemView.findViewById(R.id.ivImageBig);
-        bigImg.setVisibility(View.GONE);
+        //Locations of image, name and description found in custom_activity_list.xml
+        smallImage = itemView.findViewById(R.id.ivSmallImage);
+        name = itemView.findViewById(R.id.ivName);
+        description = itemView.findViewById(R.id.ivDescription);
+        bigImage = itemView.findViewById(R.id.bigImage);
+        bigImage.setVisibility(View.GONE);
 
-
-        smallImg.setOnClickListener(new View.OnClickListener(){
-
+        smallImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+                Intent mainActivity = new Intent(smallImage.getContext(), MainActivity.class);
+                mainActivity.putExtra("name", name.getText());
+                AlertDialog.Builder builder = new AlertDialog.Builder(itemView.getContext());
                 builder.setTitle("Profile");
                 builder.setMessage(name.getText());
-                builder.setCancelable(true);
+                builder.setCancelable(false);
+                builder.setPositiveButton("VIEW", new
+                        DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                startActivity(itemView.getContext(), mainActivity, null);
+                            }
+                        });
 
-                builder.setPositiveButton("View", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent listActivity = new Intent(smallImg.getContext(), MainActivity.class);
-                        listActivity.putExtra("Name",name.getText());
-                        listActivity.putExtra("Des",des.getText());
-                        startActivity(v.getContext(), listActivity, null);
-                        return;
-                    }
-                });
+                builder.setNegativeButton("CLOSE", new
+                        DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
 
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        return;
-                    }
-                });
-
-                AlertDialog alert = builder.create();
-                alert.show();
-
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
             }
         });
     }
+
+    // Alert Dialogue Here
+
 }

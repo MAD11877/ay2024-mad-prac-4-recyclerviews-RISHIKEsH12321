@@ -1,27 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-
-    tools:context=".MainActivity"
-    android:background="#FBEBFB"
-    android:id="@+id/main2"
-
-    >
-
+    android:background="#fbedfb"
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-
         android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
 
-        >
-
+        <!-- Your existing layout content -->
 
         <TextView
             android:id="@+id/title"
@@ -41,86 +32,74 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/background"
             android:layout_width="128dp"
             android:layout_height="128dp"
             android:layout_marginTop="50dp"
+            android:src="@mipmap/ic_launcher_round"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title"
-            android:src="@drawable/ic_launcher_background"
-            />
-
-        <ImageView
-            android:id="@+id/foreground"
-            android:layout_width="128dp"
-            android:layout_height="128dp"
-            android:layout_marginTop="50dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/title"
-            android:src="@drawable/ic_launcher_foreground"
             />
 
         <TextView
-            android:id="@+id/promt"
+            android:id="@+id/tvName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:paddingVertical="10dp"
-            android:paddingLeft="100dp"
-            android:paddingRight="100dp"
-            android:text="@string/hello"
+            android:layout_marginTop="35dp"
+            android:text="MAD"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="32sp"
+            android:textSize="36sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/foreground" />
+            app:layout_constraintTop_toBottomOf="@+id/background" />
 
         <TextView
-            android:id="@+id/lorem"
+            android:id="@+id/tvDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:paddingVertical="10dp"
-            android:paddingLeft="100dp"
-            android:paddingRight="100dp"
-            android:text="@string/lorem"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus purus leo, tincidunt nec sapien et, convallis lobortis lacus"
             android:textAlignment="center"
-            android:textColor="@color/black"
+            android:textColor="#808080"
             android:textSize="14dp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/promt" />
+            app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
         <Button
-            android:id="@+id/button1"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/button1"
-            android:layout_marginStart="36dp"
+            android:id="@+id/followbtn"
+            android:layout_width="20mm"
+            android:layout_height="8mm"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="44dp"
+            android:text="FOLLOW"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/msgbtn"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lorem"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
 
         <Button
-            android:id="@+id/button2"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/button2"
-            android:layout_marginEnd="36dp"
+            android:id="@+id/msgbtn"
+            android:layout_width="20mm"
+            android:layout_height="8mm"
+            android:layout_marginTop="44dp"
+            android:text="MESSAGE"
+            android:textSize="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lorem"
-            />
-
-
-
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toEndOf="@+id/followbtn"
+            app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
